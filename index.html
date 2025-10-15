@@ -12,21 +12,25 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
 
 </head>
 
 <body>
-    <header class="nav">
+    <header class="nav futuristic">
         <div class="container nav__in">
             <a href="https://www.sb.by/" class="logo" target="_blank" rel="noopener noreferrer">
                 <img src="./assets/img/logo.png" alt="Лого SB.BY" loading="lazy" width="44" height="44" />
                 <span class="logo-text">SB.BY</span>
             </a>
+
             <button class="nav__burger" id="navBurger" aria-label="Меню" aria-expanded="false">
                 <svg width="22" height="18" viewBox="0 0 22 18" xmlns="http://www.w3.org/2000/svg">
                     <path d="M2 2h18M2 9h18M2 16h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </button>
+
             <nav class="nav__menu" aria-label="Основное">
                 <a class="nav__link" href="#story">История</a>
                 <a class="nav__link" href="#facts">Факты</a>
@@ -35,218 +39,124 @@
         </div>
     </header>
 
-    <main id="home" class="hero">
-        <div class="blob"></div>
-        <div class="blob blob2"></div>
+    <section class="hero">
+        <div class="hero__bg" id="heroBg"></div>
         <div class="container hero__in">
             <section class="hero__content">
-                <span class="badge is-ghost reveal" data-delay="0"><span class="dot"></span> ЖИВОЙ РЕПОРТАЖ</span>
-                <span class="badge is-ghost reveal" data-delay="0"><span class="dot"></span> СПЕЦПРОЕКТ СБ</span>                
-                <h1 class="reveal" data-delay="60">Инвестировать в жизнь: история мальчика, который сильнее
-                    обстоятельств</h1>
-                <p class="lead reveal" data-delay="120">Ему 12, он обожает математику, настольный теннис и волонтёрит на
-                    городских мероприятиях. Несмотря на физические ограничения, он доказывает каждый день: важно не то,
-                    что тебя останавливает, а то, ради чего ты двигаешься вперёд. В этом интервью — про цель,
-                    дисциплину, поддержку близких и то, как общество может превратить барьеры в ступени для роста.</p>
-                <div class="hero__cta reveal" data-delay="180">
-                    <a class="btn lg primary" href="#interview">Читать интервью</a>
-                    <a class="btn lg neutral" href="#facts">Коротко о фактах</a>
+                <span class="badge is-ghost reveal" data-delay="0">
+                    <span class="dot"></span> ЖИВОЙ РЕПОРТАЖ
+                </span>
+                <h1 class="reveal" data-delay="60">Сильнее обстоятельств</h1>
+                <p class="lead reveal" data-delay="120">
+                    Он прошёл службу в спецназе, попал в тяжёлую аварию и теперь передвигается на коляске. Когда-то не
+                    мог даже сидеть — сегодня снова тренируется, работает и живёт на полную.
+                </p>
+                <div class="hero__swipe-lock">
+                    <div class="swipe-track">
+                        <div class="swipe-handle">
+                            <span class="swipe-text">→ Читать репортаж</span>
+                        </div>
+                    </div>
                 </div>
+
             </section>
-            <aside class="hero__media">
-                <figure class="hero__card reveal-img" data-delay="120">
-                    <img class="hero__img"
-                        src="https://images.unsplash.com/photo-1551717743-49959800b1f2?q=80&w=1600&auto=format&fit=crop"
-                        alt="Подросток с ноутбуком улыбается и разговаривает по телефону, сидя в коворкинге"
-                        loading="eager" />
-                    <div class="hero__glow" aria-hidden></div>
-                    <figcaption class="floating" aria-label="Небольшая заметка">«Каждый день — шанс»</figcaption>
-                </figure>
-            </aside>
-        </div>
-    </main>
-
-    <section id="facts" class="features">
-        <div class="container grid">
-            <article class="feature card reveal" data-delay="0">
-                <span class="badge"><span class="dot"></span> Учёба</span>
-                <h3>Победы на олимпиадах</h3>
-                <p>Математика и информатика — любимые предметы. Два призовых места на районных конкурсах, активное
-                    участие в кружке по робототехнике.</p>
-            </article>
-            <article class="feature card reveal" data-delay="60">
-                <span class="badge"><span class="dot"></span> Спорт</span>
-                <h3>Настольный теннис</h3>
-                <p>Тренируется три раза в неделю. Говорит, что спорт приучил его планировать и радоваться маленьким
-                    шагам вперёд.</p>
-            </article>
-            <article class="feature card reveal" data-delay="120">
-                <span class="badge"><span class="dot"></span> Сообщество</span>
-                <h3>Волонтёрство</h3>
-                <p>Помогает на городских событиях — от регистрации участников до ведения соцсетей. «Это возможность быть
-                    полезным и знакомиться с людьми».</p>
-            </article>
-            <article class="feature card reveal" data-delay="180">
-                <span class="badge"><span class="dot"></span> Творчество</span>
-                <h3>Программирование</h3>
-                <p>Изучает Python и JavaScript. Создал несколько небольших проектов, включая калькулятор доступности
-                    маршрутов для людей с ограниченными возможностями.</p>
-            </article>
-            <article class="feature card reveal" data-delay="240">
-                <span class="badge"><span class="dot"></span> Коммуникация</span>
-                <h3>Публичные выступления</h3>
-                <p>Участвовал в двух школьных конференциях с докладами о важности инклюзивного образования. Преодолел
-                    страх сцены и теперь с удовольствием делится опытом.</p>
-            </article>
-            <article class="feature card reveal" data-delay="300">
-                <span class="badge"><span class="dot"></span> Планирование</span>
-                <h3>Система целей</h3>
-                <p>Ведёт ежедневник, где расписывает краткосрочные и долгосрочные цели. «Без плана легко потеряться. С
-                    планом — видишь прогресс и радуешься каждому шагу».</p>
-            </article>
         </div>
     </section>
 
-    <section class="testimonials"
-        style="padding: 8vh 0; background:color-mix(in srgb, var(--bg-soft) 40%, transparent)">
-        <div class="container">
-            <h2 style="font-size:clamp(22px, 2.6vw, 36px); margin:0 0 28px; text-align:center">Что говорят о нём</h2>
-            <div class="grid">
-                <div class="card reveal" style="grid-column: span 4" data-delay="0">
-                    <p style="font-style:italic; color:var(--text); margin:0 0 12px">«Он всегда первым тянет руку на
-                        уроке. Не потому, что знает всё, а потому что не боится ошибиться и учиться. Таким ученикам
-                        хочется давать больше».</p>
-                    <p style="color:var(--muted); margin:0"><strong>Мария Ивановна</strong>, учитель математики</p>
-                </div>
-                <div class="card reveal" style="grid-column: span 4" data-delay="80">
-                    <p style="font-style:italic; color:var(--text); margin:0 0 12px">«На тренировках он показывает
-                        пример упорства. Когда другие сдаются после третьей попытки, он делает пятую, шестую... пока не
-                        получится. Это вдохновляет всю команду».</p>
-                    <p style="color:var(--muted); margin:0"><strong>Сергей Петрович</strong>, тренер по настольному
-                        теннису</p>
-                </div>
-                <div class="card reveal" style="grid-column: span 4" data-delay="160">
-                    <p style="font-style:italic; color:var(--text); margin:0 0 12px">«Он мой друг, который всегда
-                        поможет разобраться с задачей по информатике и никогда не будет хвастаться, что у него
-                        получилось, а у тебя нет. Просто объяснит ещё раз».</p>
-                    <p style="color:var(--muted); margin:0"><strong>Даниил</strong>, одноклассник</p>
-                </div>
+    <section class="video-section" data-lazy-video>
+        <video class="video-bg" muted loop playsinline preload="none">
+            <source data-src="./assets/video/video-1.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+        <div class="video-caption">
+            <h2>«Падать — не страшно. Страшно не встать»</h2>
+            <p>Из бывшего спецназовца — в мастера бьюти-сферы. История силы духа, нового взгляда на жизнь и настоящего
+                преодоления.</p>
+        </div>
+    </section>
+
+    <section class="story-centered has-bg">
+        <div class="story-overlay"></div>
+        <div class="container story-centered__in">
+            <h2>Злой рок</h2>
+            <p>За свои 27 лет Валентин Гойко прошел много дорог: он старший в многодетной семье – и это обязывающий
+                статус, за плечами учеба в Столинском аграрном колледже, служба в спецназе, которой гордится, работа
+                механизатором в КСУП «Струга». В этот же ряд необходимо вписать и попытку… купить костюм, чтобы пойти на
+                свадьбу. Покупка, увы, не состоялась, но желание ее совершить жизнь перевернуло.</p>
+            <p>Валентин вместе с другом, который был за рулем автомобиля, ехали в столицу. В какой-то момент на дорогу
+                неожиданно выскочил лось. Избежать столкновения с животным не удалось. Авто улетело в кювет. Валентин
+                помнит немногое: то приходил в себя, то терял сознание. «Скорая» увезла его в РНПЦ травматологии и
+                ортопедии, где вскоре парню вынесли вердикт – оскольчатый перелом шейных позвонков.</p>
+            <p>«Ну, перелом, полежу, подлечусь, – размышлял молодой человек, которому на тот момент был всего 21 год. –
+                Я просто на больничном, а выпишусь, и жизнь вернется в прежнее русло».</p>
+            <p>Увы, вернуться к прежней жизни не удалось. По возвращении домой наступил сложный период. Пришло
+                осознание, что он сломан и сломлен. Сегодня Валентин честно признается: ему – парню крепкому,
+                закаленному – пришлось нелегко. От осознания собственного бессилия слезы наворачивались на глаза. И хотя
+                родные, друзья, знакомые не оставили его один на один с бедой, но тогда ему не хотелось никого видеть.
+                Он уезжал на коляске в сторону леса и там давал волю чувствам.</p>
+        </div>
+    </section>
+
+    <section class="split-hero has-bg">
+        <div class="bg-photo"></div>
+        <div class="container split-hero__in">
+            <div class="split-hero__text">
+                <h2>Победа над собой</h2>
+                <p>Первые победы над собой у него уже были. После выписки из РНПЦ травматологии уехал на реабилитацию в
+                    Аксаковщину. На тот момент он даже сидеть не мог: когда принимал вертикальное положение, терял
+                    сознание. А сейчас запросто сам передвигался в коляске. Разве это не достижение?!</p>
+                <p>Валентин понимал, что первые шаги в сторону победы над собой сделаны. И все же в больнице, в
+                    реабилитационном центре было проще, там все в одинаковом положении. Дома наоборот – все здоровы,
+                    один ты – белая ворона. И хотя рядом постоянно был брат Юрий, который ради Валентина оставил работу
+                    и помогал ему адаптироваться в новой реальности, но уныние в душе парня прописалось. Благо такое
+                    состояние продлилось недолго.</p>
             </div>
-        </div>
-    </section>
-
-    <section id="interview" class="article">
-        <div class="container article__in">
-            <article class="prose reveal" data-delay="0">
-                <h2 id="story">Интервью</h2>
-                <p class="muted">Записали: редакция «Жить громче». Место встречи — городской коворкинг после тренировки
-                    по теннису.</p>
-                <p><strong>— Что тебя мотивирует по утрам?</strong><br> — План на день. Я его пишу вечером. Когда
-                    знаешь, что и зачем делаешь, становится легче. И ещё — команда. Учителя, тренер, родители, друзья.
-                </p>
-                <p><strong>— Что для тебя означает «доступная среда»?</strong><br> — Когда я могу попасть туда, где
-                    мечтаю быть: в школу, на стадион, в библиотеку. И когда люди смотрят на меня не через диагноз, а
-                    через цели.</p>
-                <p class="quote">«Поддержка — это не жалость. Это равные условия для старта»</p>
-                <p><strong>— Случалось ли, что было совсем трудно?</strong><br> — Конечно. Устаёшь быстрее, чем другие.
-                    Но если разбить задачу на шаги, всё получается. Иногда прошу помощи — и это нормально.</p>
-                <p><strong>— Как ты относишься к неудачам?</strong><br> — Раньше расстраивался сильно. Сейчас понимаю:
-                    каждая ошибка — это урок. На олимпиаде по математике не решил последнюю задачу, зато разобрался, где
-                    пробел в знаниях, и подтянул эту тему.</p>
-                <p><strong>— Что самое важное тебе дала школа, кроме знаний?</strong><br> — Друзей, которые не делят на
-                    «своих» и «других». И учителей, которые не говорят «ты не сможешь», а спрашивают: «Как тебе будет
-                    удобнее?». Это огромная разница.</p>
-                <p><strong>— Чем помогает спорт в повседневной жизни?</strong><br> — Дисциплина, концентрация, умение
-                    проигрывать и начинать заново. После тренировки я чувствую себя увереннее, даже если день был
-                    сложным. Плюс, я стал терпеливее — не всё получается сразу, и это нормально.</p>
-                <p class="quote">«Когда ты знаешь свою цель, препятствия становятся просто задачами для решения»</p>
-                <p><strong>— Что бы ты посоветовал другим ребятам, которые сталкиваются с барьерами?</strong><br> — Не
-                    бояться пробовать. Да, будут отказы, будут моменты, когда кажется, что ничего не выйдет. Но если не
-                    попробовать, точно ничего не выйдет. И окружайте себя людьми, которые верят в вас — это даёт силы.
-                </p>
-                <p><strong>— О чём мечтаешь?</strong><br> — Построить приложение, которое будет помогать ребятам
-                    находить спортивные секции рядом с домом и добираться туда без барьеров. Чтобы каждый мог заниматься
-                    тем, что ему интересно, независимо от возможностей.</p>
-                <p><strong>— Что бы ты изменил в обществе прямо сейчас?</strong><br> — Чтобы люди задавали вопросы
-                    вместо того, чтобы делать предположения. «Тебе помочь?» — это намного лучше, чем жалостливые взгляды
-                    или игнорирование. Простое внимание и готовность услышать — вот что нужно.</p>
-            </article>
-
-            <aside class="aside reveal" data-delay="60">
-                <div class="stat"><span>Возраст</span> <b>12</b></div>
-                <div class="stat"><span>Тренировки в неделю</span> <b>3</b></div>
-                <div class="stat"><span>Добровольческие часы/мес</span> <b>14+</b></div>
-                <div class="stat"><span>Олимпиады в этом году</span> <b>5</b></div>
-                <div class="stat"><span>Проектов по программированию</span> <b>8</b></div>
-                <div class="card" style="margin-top:12px">
-                    <h3 style="margin:0 0 10px">Ключевая мысль</h3>
-                    <p class="muted" style="margin:0">«Больше всего помогают не лайки, а доступные пространства и
-                        учителя, которые верят».</p>
-                </div>
-                <div class="card" style="margin-top:12px">
-                    <h3 style="margin:0 0 10px">Любимая книга</h3>
-                    <p class="muted" style="margin:0">«Вдохновение на каждый день» — сборник историй о людях, которые не
-                        сдавались перед трудностями.</p>
-                </div>
-            </aside>
-        </div>
-    </section>
-
-    <section class="stats-section" style="padding: 10vh 0">
-        <div class="container">
-            <h2 style="font-size:clamp(22px, 2.6vw, 36px); margin:0 0 14px; text-align:center">Почему доступная среда
-                важна</h2>
-            <p class="muted" style="text-align:center; max-width:65ch; margin:0 auto 38px">Инклюзивное общество — это не
-                только про инфраструктуру. Это про возможности, которые открываются перед каждым человеком, независимо
-                от его особенностей.</p>
-            <div class="grid">
-                <div class="card reveal" style="grid-column: span 3; text-align:center" data-delay="0">
-                    <div
-                        style="font-size:clamp(32px, 4vw, 48px); font-weight:800; background:linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:8px">
-                        15%</div>
-                    <p style="color:var(--text); margin:0 0 4px; font-weight:600">населения планеты</p>
-                    <p style="color:var(--muted); margin:0; font-size:14px">имеют ту или иную форму инвалидности</p>
-                </div>
-                <div class="card reveal" style="grid-column: span 3; text-align:center" data-delay="80">
-                    <div
-                        style="font-size:clamp(32px, 4vw, 48px); font-weight:800; background:linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:8px">
-                        2×</div>
-                    <p style="color:var(--text); margin:0 0 4px; font-weight:600">выше успеваемость</p>
-                    <p style="color:var(--muted); margin:0; font-size:14px">у детей в инклюзивных классах по сравнению с
-                        изолированным обучением</p>
-                </div>
-                <div class="card reveal" style="grid-column: span 3; text-align:center" data-delay="160">
-                    <div
-                        style="font-size:clamp(32px, 4vw, 48px); font-weight:800; background:linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:8px">
-                        73%</div>
-                    <p style="color:var(--text); margin:0 0 4px; font-weight:600">больше уверенности</p>
-                    <p style="color:var(--muted); margin:0; font-size:14px">в себе показывают дети, занимающиеся
-                        адаптивным спортом</p>
-                </div>
-                <div class="card reveal" style="grid-column: span 3; text-align:center" data-delay="240">
-                    <div
-                        style="font-size:clamp(32px, 4vw, 48px); font-weight:800; background:linear-gradient(135deg, var(--brand), var(--brand-2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:8px">
-                        100%</div>
-                    <p style="color:var(--text); margin:0 0 4px; font-weight:600">могут участвовать</p>
-                    <p style="color:var(--muted); margin:0; font-size:14px">когда мы создаём действительно доступную
-                        среду для всех</p>
-                </div>
+            <div class="split-hero__media">
+                <svg class="Hero__image-grid anim-hero" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 590.91 632.66">
+                    <defs>
+                        <clipPath id="heroclip1">
+                            <rect class="hero__swipe-1" x="101.31" y="51.24" width="488.79" height="221.87"
+                                fill="#fff" />
+                        </clipPath>
+                        <clipPath id="heroclip2">
+                            <rect class="hero__swipe-2" x="195.36" y="293.94" width="292.4" height="268.6"
+                                fill="#fff" />
+                        </clipPath>
+                        <clipPath id="heroclip3">
+                            <rect class="hero__swipe-3" x="1.73" y="233.41" width="174.53" height="162.61"
+                                fill="#fff" />
+                        </clipPath>
+                        <clipPath id="heroclip4">
+                            <rect class="hero__swipe-4" x="100.03" y="405.79" width="75.83" height="73.12"
+                                fill="#fff" />
+                        </clipPath>
+                    </defs>
+                    <g class="fouc fouc--hero" opacity="0">
+                        <circle class="hero__circle" cx="90.18" cy="79.56" r="50" fill="#dae1e2"></circle>
+                        <circle class="hero__circle" cx="488.39" cy="563.49" r="30" fill="#23d8a0"></circle>
+                        <rect class="hero__swipe-1" x="102" y="52" width="458" height="220" fill="#23d8a0"></rect>
+                        <rect class="hero__swipe-2" x="196" y="294" width="292" height="268" fill="#FAFAFA"></rect>
+                        <rect class="hero__swipe-3" x="2" y="234" width="173" height="162" fill="#FAFAFA"></rect>
+                        <rect class="hero__swipe-4" x="101" y="406" width="75" height="73" fill="#23d8a0"></rect>
+                        <image clip-path="url(#heroclip1)" href="./assets/img/flag.JPG" x="101" y="51" width="490"
+                            height="223"></image>
+                        <image clip-path="url(#heroclip2)" href="./assets/img/sec-23.jpg" x="195" y="293" width="294"
+                            height="270"></image>
+                        <image clip-path="url(#heroclip3)" href="./assets/img/door.jpg" x="1" y="233" width="176"
+                            height="164"></image>
+                        <image clip-path="url(#heroclip4)" href="./assets/img/orbital/o-1.jpg" x="99" y="404" width="78"
+                            height="76"></image>
+                    </g>
+                </svg>
             </div>
         </div>
     </section>
 
     <section id="gallery" class="gallery">
         <div class="container">
-            <header>
-                <h2>Фотогалерея: «День, который меняет привычки»</h2>
-                <p class="muted">Нестандартный 3D‑слайдер с акцентом на эмоции: тренировка, волонтёрство, учёба и отдых.
-                    Управление — стрелки, клики по точкам, свайпы.</p>
-            </header>
             <div class="orbit" aria-label="Фотогалерея">
                 <div class="orbit__viewport">
-                    <div class="orbit__track" id="orbitTrack">
-                        <!-- Slides injected by JS -->
-                    </div>
+                    <div class="orbit__track" id="orbitTrack"></div>
                     <button class="orbit__btn prev" id="orbitPrev" aria-label="Предыдущий кадр">◀</button>
                     <button class="orbit__btn next" id="orbitNext" aria-label="Следующий кадр">▶</button>
                 </div>
@@ -255,34 +165,50 @@
         </div>
     </section>
 
-    <section id="support" class="cta">
-        <div class="container cta__in">
-            <div class="cta__card reveal" data-delay="0">
-                <h2 style="margin:0 0 8px">Подписаться на новые истории</h2>
-                <p class="muted">Раз в неделю — письмо о проектах доступности, интервью с героями, которые меняют мир, и
-                    практических шагах, которые может сделать каждый для создания инклюзивного общества.</p>
-                <form class="input"
-                    onsubmit="event.preventDefault(); this.reset(); alert('Спасибо! Мы отправим письмо-подтверждение.');">
-                    <label class="visually-hidden" for="email">Ваш e‑mail</label>
-                    <input id="email" type="email" placeholder="Введите e‑mail" required>
-                    <button class="btn primary" type="submit">Подписаться</button>
-                </form>
-            </div>
-            <div class="reveal" data-delay="120">
-                <div class="card" style="height:100%">
-                    <h3 style="margin-top:0">Как помочь прямо сейчас</h3>
-                    <ul style="margin:8px 0 0; padding-left:18px; color:var(--muted)">
-                        <li>Поддержать кружки инклюзивного спорта финансово или как волонтёр.</li>
-                        <li>Предложить стажировки и менторство для подростков с особенностями развития.</li>
-                        <li>Сделать пространство вашего офиса или заведения доступнее: пандусы, широкие проходы,
-                            тактильная навигация.</li>
-                        <li>Рассказать эту историю друзьям — иногда вдохновение меняет больше, чем деньги.</li>
-                        <li>Стать наставником в программах по программированию или робототехнике для детей.</li>
-                    </ul>
-                    <a class="btn ghost" style="margin-top:14px; display:inline-block" href="#">Связаться с
-                        редакцией</a>
-                </div>
-            </div>
+    <section class="story-contrast slideshow">
+        <div class="slideshow-bg">
+            <div class="slide" style="background-image: url('./assets/img/s-b/s-1.jpg')"></div>
+            <div class="slide" style="background-image: url('./assets/img/s-b/s-2.jpg')"></div>
+            <div class="slide" style="background-image: url('./assets/img/s-b/s-3.jpg')"></div>
+            <div class="slide" style="background-image: url('./assets/img/s-b/s-4.jpg')"></div>
+        </div>
+        <div class="container story-contrast__in">
+            <h2>Из спецназа – в бьюти-сферу</h2>
+            <p>В 2022 году Валентин Гойко попал в реабилитационный центр «Преодоление» в Москве. Это была еще одна
+                ступенька к самостоятельной жизни. Но речь уже не шла о бытовых навыках – это давно освоено. Валентин
+                думал о профессиональной реализации. Не может же он – молодой, крепкий парень – жить с протянутой рукой
+                или надеяться, что ему всегда будут помогать близкие. Нет, он хотел сам зарабатывать на жизнь. И судьба
+                его услышала.</p>
+            <p>Управление по труду, занятости и социальной защите Столинского райисполкома предложило Валентину Гойко
+                работу оператором ЭВМ у предпринимателя. Молодой человек вел соцсети, занимался продвижением товаров.
+            </p>
+            <p>– Вскоре у меня появилась мысль работать на себя, – отмечает Валентин. – Как говорится, на ловца и зверь
+                бежит. Так получилось, что у коллеги по несчастью, тоже колясочницы, с которой общаюсь, есть подруга –
+                мастер по маникюру. Девушки предложили мне постичь эту нехитрую науку. Сначала сомневался, даже сам над
+                собой посмеивался: бравый спецназовец с накачанными мускулами занимается ногтями…</p>
+            <p>Тем не менее Валентин за месяц все же научился умело обрезать кутикулу, выводить лаком замысловатые узоры
+                на ногтях. Столинские мастера маникюра подарили ему аппаратуру и материалы, необходимые для работы. И
+                дело пошло. Валентину работа понравилась. Но…</p>
+        </div>
+    </section>
+
+    <section class="final-tribute">
+        <div class="final-bg"></div>
+        <div class="container final-tribute__in">
+
+
+            <h2>Двигаться дальше</h2>
+
+
+
+            <p>В Ольманах, где живет молодой человек, порядка 400 жителей. Желающих делать маникюр в разы меньше, к тому
+                же в деревне есть и другой мастер. Так что особо не заработаешь. Валентин задумывается о смене места
+                жительства. Он готов к самостоятельной жизни.</p>
+            <p>На данный момент живет с 82-летней бабушкой, которая старается заботиться о внуке. Но Валентин принимает
+                разве ее вкусную еду, остальное делает сам. Еще и другим помогает.</p>
+            <p>Не зря же командование части, в которой служил и до сих пор поддерживает отношения, представило его к
+                медали «За особые заслуги». Награда послужила стимулом двигаться дальше, развиваться, искать свое место
+                в этой непростой жизни.</p>
         </div>
     </section>
 
@@ -290,67 +216,22 @@
         <div class="section-header">
             <h2 class="section-title text-pr">Живой репортаж — материалы</h2>
         </div>
-
-        <!-- viewport показывает ОДНУ карточку; остальные ждут своей очереди -->
         <div class="projects-viewport" data-autoplay="true" data-interval="5000">
             <div class="projects-stage">
-                <!-- просто твои ссылки — без изменений -->
-                <a href="https://www.sb.by/sp/bear-hunting/" class="project-card">
-                    <img src="./assets/img/projects/hunting.png" loading="lazy" alt="Охота на медведя">
+                <a href="https://www.sb.by/sp/monastyring/" class="project-card">
+                    <img src="./assets/img/projects/hero.jpg" loading="lazy" alt="Монастыринг">
                     <div class="project-info">
-                        <h3>Охота на медведя</h3>
-                        <p>Как корреспондент СБ отправился на медведя</p>
+                        <h3>Монастыринг</h3>
+                        <p>Попробуем на себе?</p>
                     </div>
                 </a>
-
-                <a href="https://www.sb.by/sp/voencore2025/index.html" class="project-card">
-                    <img src="./assets/img/projects/voencore.jpg" loading="lazy" alt="Военкор-2025">
+                <a href="https://www.sb.by/sp/yarmarki/" class="project-card">
+                    <img src="./assets/img/projects/ov-row.jpg" loading="lazy" alt="Ярмарки Беларуси">
                     <div class="project-info">
-                        <h3>Военкор-2025</h3>
-                        <p>Глазами журналиста на передовой</p>
+                        <h3>Встречаем осень вкусно</h3>
+                        <p>Сельхозярмарки в Беларуси</p>
                     </div>
                 </a>
-
-                <a href="https://www.sb.by/sp/school/" class="project-card">
-                    <img src="./assets/img/projects/scool.jpg" loading="lazy" alt="Идем в школу">
-                    <div class="project-info">
-                        <h3>Идем в школу</h3>
-                        <p>Чем удивляют новые школы в Беларуси?</p>
-                    </div>
-                </a>
-
-                <a href="https://www.sb.by/sp/trafficrules/" class="project-card">
-                    <img src="./assets/img/projects/PDD.jpg" loading="lazy" alt="НОВШЕСТВА ПДД">
-                    <div class="project-info">
-                        <h3>НОВШЕСТВА ПДД</h3>
-                        <p>Что нового в правилах дорожного движения?</p>
-                    </div>
-                </a>
-
-                <a href="https://www.sb.by/sp/parad/" class="project-card">
-                    <img src="./assets/img/projects/hero-1.jpg" loading="lazy" alt="Военный парад">
-                    <div class="project-info">
-                        <h3>Военный парад в Китае</h3>
-                        <p>80-летие завершения Второй мировой войны</p>
-                    </div>
-                </a>
-
-                <a href="https://www.sb.by/sp/adaptacia/" class="project-card">
-                    <img src="./assets/img/projects/006.jpg" loading="lazy" alt="Адаптация">
-                    <div class="project-info">
-                        <h3>Адаптация в общежитиях</h3>
-                        <p>Как адаптируются первокурсники</p>
-                    </div>
-                </a>
-
-                <a href="https://www.sb.by/sp/miting/" class="project-card">
-                    <img src="./assets/img/projects/text-2.JPG" loading="lazy" alt="БЕРЕЗА-КАРТУЗСКАЯ">
-                    <div class="project-info">
-                        <h3>БЕРЕЗА-КАРТУЗСКАЯ</h3>
-                        <p>ВО ИМЯ ИСТОРИИ</p>
-                    </div>
-                </a>
-
                 <a href="https://www.sb.by/sp/citizenship/" class="project-card">
                     <img src="./assets/img/projects/passport.jpg" loading="lazy" alt="Белорусы+">
                     <div class="project-info">
@@ -358,70 +239,74 @@
                         <p>Новые граждане республики</p>
                     </div>
                 </a>
-
-                <a href="https://www.sb.by/sp/yarmarki/" class="project-card">
-                    <img src="./assets/img/projects/ov-row.jpg" loading="lazy" alt="Ярмарки Беларуси">
+                <a href="https://www.sb.by/sp/adaptacia/" class="project-card is-active">
+                    <img src="./assets/img/projects/006.jpg" loading="lazy" alt="Адаптация">
                     <div class="project-info">
-                        <h3>Встречаем осень вкусно</h3>
-                        <p>Cельхозярмарки в Беларуси!</p>
+                        <h3>Адаптация в общежитиях</h3>
+                        <p>Как адаптируются первокурсники</p>
                     </div>
                 </a>
             </div>
-
-            <!-- управление (по желанию можно скрыть) -->
             <div class="projects-controls">
                 <button class="pr-btn prev" aria-label="Назад">◀</button>
                 <div class="pr-dots" aria-hidden="true"></div>
                 <button class="pr-btn next" aria-label="Вперед">▶</button>
             </div>
         </div>
+        <div class="projects-footer">
+            <a href="https://www.sb.by/articles/themes/spetsproekt-sb-nash-zhivoy-reportazh/"
+                class="btn-all-projects">Смотреть все материалы</a>
+        </div>
     </section>
 
-
-    <footer>
-        <div class="container">
-            <div class="grid" style="margin-bottom:28px">
-                <div style="grid-column: span 4">
-                    <h3 style="margin:0 0 12px; font-size:18px">О проекте</h3>
-                    <p class="muted" style="font-size:14px">«Жить громче» — медиапроект о людях, которые меняют
-                        представление об ограничениях. Мы рассказываем истории, которые вдохновляют и мотивируют
-                        действовать.</p>
-                </div>
-                <div style="grid-column: span 4">
-                    <h3 style="margin:0 0 12px; font-size:18px">Полезные ссылки</h3>
-                    <ul style="list-style:none; padding:0; margin:0">
-                        <li style="margin-bottom:8px"><a href="#"
-                                style="color:var(--muted); font-size:14px; text-decoration:underline">Программы
-                                инклюзивного спорта</a></li>
-                        <li style="margin-bottom:8px"><a href="#"
-                                style="color:var(--muted); font-size:14px; text-decoration:underline">Центры доступности
-                                в образовании</a></li>
-                        <li style="margin-bottom:8px"><a href="#"
-                                style="color:var(--muted); font-size:14px; text-decoration:underline">Волонтёрские
-                                программы</a></li>
-                        <li style="margin-bottom:8px"><a href="#"
-                                style="color:var(--muted); font-size:14px; text-decoration:underline">Гранты для НКО</a>
-                        </li>
-                    </ul>
-                </div>
-                <div style="grid-column: span 4">
-                    <h3 style="margin:0 0 12px; font-size:18px">Контакты</h3>
-                    <p class="muted" style="font-size:14px; margin:0 0 8px">Email: hello@louder.life</p>
-                    <p class="muted" style="font-size:14px; margin:0 0 8px">Предложить историю: stories@louder.life</p>
-                    <p class="muted" style="font-size:14px; margin:0">Сотрудничество: partners@louder.life</p>
-                </div>
-            </div>
-            <div
-                style="display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:22px; border-top:1px solid color-mix(in srgb, var(--muted) 20%, transparent)">
-                <p style="margin:0">© 2025 SB.BY</p>
-                <p style="margin:0"><a href="#" style="text-decoration:underline">Политика конфиденциальности</a></p>
-            </div>
+    <footer class="site-footer">
+        <div class="footer-credits">
+            <p>Автор: <strong>Виолетта ДРАЛЮК</strong></p>
+            <p>Фото: <strong>Иван ЯРИВАНОВИЧ</strong></p>
         </div>
+        <hr class="footer-divider" />
+        <div class="footer-copy">© Издательский дом «Беларусь сегодня»</div>
     </footer>
 
+    <button id="scrollTopBtn" aria-label="Наверх">
+        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991103.png" 
+     alt="Компас" 
+     width="64" height="64" 
+     class="compass-icon" />
+
+    </button>
+
     <script src="./assets/js/main.js"></script>
+    <script>
+        function loadYandexMetrika() {
+            (function (m, e, t, r, i, k, a) {
+                m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+                m[i].l = 1 * new Date();
+                for (var j = 0; j < document.scripts.length; j++) {
+                    if (document.scripts[j].src === r) return;
+                }
+                (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]),
+                    (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
+            })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+            ym(16707172, "init", { webvisor: true, clickmap: true, accurateTrackBounce: true, trackLinks: true });
+        }
 
+        function loadGTM() {
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+                var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != "dataLayer" ? "&l=" + l : "";
+                j.async = true;
+                j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, "script", "dataLayer", "GTM-KRVNNK");
+        }
 
+        window.addEventListener("load", () => {
+            setTimeout(loadYandexMetrika, 3000);
+            setTimeout(loadGTM, 4000);
+        });
+    </script>
 </body>
 
 </html>
