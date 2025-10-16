@@ -1,55 +1,276 @@
-/* Чуть компактнее контейнер на небольших экранах */
-@media (max-width:1280px){
-  :root{ --container: min(1100px, 94vw); }
+/* === RESPONSIVE === */
+@media (max-width: 1280px) {
+  :root {
+    --container: min(1100px, 94vw);
+  }
 }
 
-/* Навигация — перенос меню и CTA в две строки */
-@media (max-width:980px){
-  .nav__in{flex-wrap:wrap; gap:12px}
-  .nav__menu{order:3; width:100%; overflow:auto; gap:16px; padding-bottom:6px}
-  .nav__cta{order:2; margin-left:auto}
+@media (max-width: 980px) {
+  .nav__burger {
+    display: inline-flex;
+  }
+  .nav__menu {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 20px;
+    transform: translateY(-120%);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.4s ease;
+  }
+  .nav.is-open .nav__menu {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .nav__link {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+  .hero__in {
+    padding-block: 140px 100px;
+  }
+  .split-hero__in {
+    grid-template-columns: 1fr;
+  }
+  .split-hero__media {
+    order: -1;
+    margin-bottom: 40px;
+  }
+  .anim-hero {
+    max-width: 100%;
+  }
 }
 
-/* HERO: одна колонка, медиа сверху, подписи аккуратнее */
-@media (max-width:980px){
-  .hero__in{grid-template-columns:1fr}
-  .floating{right:10px; bottom:-12px; transform:rotate(0)}
-}
-@media (max-width:760px){
-  .hero h1{font-size:clamp(22px,5.2vw,34px)}
-  .hero .lead{max-width:100%}
-  .hero__img{aspect-ratio:16/12}
-}
-
-/* FEATURES: 3→2→1 колонки */
-@media (max-width:900px){ .feature{grid-column:span 6} }
-@media (max-width:640px){ .feature{grid-column:span 12} }
-
-/* ARTICLE: в столбик, убираем sticky */
-@media (max-width:1020px){
-  .article__in{grid-template-columns:1fr}
-  .aside{position:relative; top:auto}
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: clamp(30px, 8vw, 50px);
+  }
+  .video-section {
+    height: 70vh;
+  }
+  .video-caption {
+    margin: 0 0 48px 24px;
+    padding: 0;
+  }
 }
 
-/* CTA: одна колонка */
-@media (max-width:980px){
-  .cta__in{grid-template-columns:1fr}
+@media (max-width: 800px) {
+  .story-centered.has-bg {
+    text-align: left;
+  }
+  .story-centered h2 {
+    text-align: center;
+    font-size: clamp(30px, 6vw, 50px);
+  }
+  .story-centered__in {
+    padding-inline: 18px;
+  }
+  .story-contrast p {
+    text-align: left;
+  }
+  .final-tribute p {
+    text-align: left;
+  }
 }
 
-/* FOOTER: перенос строк и центрирование (если нужно) */
-@media (max-width:720px){
-  footer .container{display:flex; flex-direction:column; gap:10px}
+@media (max-width: 760px) {
+  .hero .lead {
+    font-size: 16px;
+  }
+  .hero__cta {
+    flex-direction: column;
+  }
+
+  .hero__content {
+    bottom: auto; /* убираем нижнее прижатие */
+    top: 35%; /* поднимаем контент вверх — регулируется от 25% до 40% */
+    transform: translate(-50%, -50%); /* выравниваем по центру */
+    padding-bottom: 50px;
+  }
+
+  .hero__title {
+    font-size: 26px;
+    line-height: 1.2;
+  }
+
+  .hashtags {
+    margin-top: 10px;
+    gap: 6px;
+  }
+
+  /* === HERO SWIPE === */
+  .hero__swipe-lock {
+    width: 90%;
+    height: 65px;
+    margin: 0 auto;
+  }
+
+  .swipe-track {
+    border-radius: 40px;
+    border-width: 1.5px;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.15);
+  }
+
+  .swipe-label {
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    opacity: 0.7;
+    transform: translateY(2px);
+  }
+
+  .swipe-handle {
+    top: 4px;
+    left: 4px;
+    width: 55px;
+    height: 55px;
+    padding-left: 10px;
+    font-size: 28px;
+    box-shadow: 0 3px 8px rgba(31, 101, 214, 0.35);
+    transition: transform 0.25s ease, background 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .swipe-handle:active {
+    transform: scale(0.94);
+  }
+
+  .swipe-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* после разблокировки — компактнее, но выразительно */
+  .swipe-handle.unlocked {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(40, 199, 111, 0.4);
+  }
+
+  .swipe-handle.unlocked .swipe-text {
+    font-size: 30px;
+  }
+
+  .swipe-unlocked .swipe-track {
+    box-shadow: 0 0 15px rgba(40, 199, 111, 0.25),
+      inset 0 0 10px rgba(40, 199, 111, 0.15);
+  }
+
+   .story-centered.has-bg {
+    padding-block: clamp(80px, 15vh, 120px);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+  }
+
+  .story-centered .story-overlay {
+    background: rgba(0, 0, 0, 0.65); /* чуть темнее для контраста */
+    backdrop-filter: brightness(0.8) blur(2px);
+  }
+
+  .story-centered__in {
+    padding-inline: 16px;
+    max-width: 90%;
+    animation: fadeInUp 1s ease both;
+  }
+
+  .story-centered h2 {
+    font-size: clamp(26px, 7vw, 34px);
+    margin-bottom: 20px;
+    line-height: 1.25;
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.25);
+    letter-spacing: 0.5px;
+  }
+
+  .story-centered p {
+    font-size: clamp(15px, 4.2vw, 17px);
+    line-height: 1.6;
+    margin-bottom: 1.2em;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .quote {
+    padding: 25px 20px;
+    font-size: 16px;
+    line-height: 1.6;
+    border-left-width: 3px;
+  }
+
+  .quote-mark {
+    font-size: 48px;
+    top: -6px;
+    left: -6px;
+  }
+
+  .quote-mark.right {
+    bottom: -10px;
+    right: 6px;
+  }
+
+
+  .smoke-block {
+    padding: 25px 20px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
 }
 
-/* GALLERY: кнопки скрываем, карточку делаем шире */
-@media (max-width:720px){
-  .orbit__card{width:82%}
-  .orbit__btn{display:none}
+
+
+@media (max-width: 720px) {
+  .orbit__card {
+    width: 82%;
+  }
+  .orbit__btn {
+    display: none;
+  }
 }
 
-/* Мелкие правки типографики на очень узких */
-@media (max-width:480px){
-  .badge{font-size:11px; padding:5px 10px}
-  .btn{padding:10px 14px}
-  .stat{padding:12px 14px}
+@media (max-width: 480px) {
+  .badge {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+  .btn {
+    padding: 10px 14px;
+  }
+
+  .story-centered.has-bg {
+    padding-block: 70px;
+  }
+
+  .story-centered h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .story-centered p {
+    font-size: 15px;
+    line-height: 1.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal.is-in {
+    animation: none;
+  }
+  .btn:hover {
+    transform: none;
+  }
 }
