@@ -1493,3 +1493,19 @@ img {
 #scrollTopBtn img { width: 70%; height: 70%; object-fit: contain; }
 
 
+.is-visible {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.headline,
+.text-block,
+.hashtags,
+.kitel,
+.man,
+.medals,
+.decor-bottom-left {
+  opacity: 0;
+  transform: translateY(40px);
+}

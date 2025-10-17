@@ -1,16 +1,39 @@
-// === LAZY LOADING ===
-const lazyObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        const t = +(e.target.dataset.delay || 0);
-        setTimeout(() => e.target.classList.add("is-in"), t);
-        lazyObserver.unobserve(e.target);
+// === Intersection Observer для анимации элементов ===
+const observer = new IntersectionObserver(
+  (entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = +(el.dataset.delay || 0);
+        setTimeout(() => el.classList.add("is-visible"), delay);
+        obs.unobserve(el);
       }
     });
   },
-  { threshold: 0.1 }
+  { threshold: 0.15, rootMargin: "0px 0px -10% 0px" }
 );
+
+// Следим за ключевыми элементами
+document
+  .querySelectorAll(
+    ".headline, .text-block, .hashtags, .kitel, .man, .medals, .decor-bottom-left"
+  )
+  .forEach((el) => observer.observe(el));
+
+// Lazy загрузка изображений
+document.querySelectorAll("img[data-src]").forEach((img) => {
+  const imgObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.src = entry.target.dataset.src;
+        entry.target.removeAttribute("data-src");
+        obs.unobserve(entry.target);
+      }
+    });
+  });
+  imgObserver.observe(img);
+});
+
 
 document
   .querySelectorAll(".reveal, .reveal-img")

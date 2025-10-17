@@ -17,14 +17,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
     <style>
         .exp {
-            
+
             position: relative;
             width: 100%;
             height: 100vh;
             overflow: hidden;
-            background: 
-    linear-gradient(to bottom, rgba(130,130,130,0.9), rgba(130,130,130,0.95)),
-    url('./assets/img/hero/bg-city.png') center top / cover no-repeat;
+            background:
+                linear-gradient(to bottom, rgba(130, 130, 130, 0.9), rgba(130, 130, 130, 0.95)),
+                url('./assets/img/hero/bg-city.png') center top / cover no-repeat;
         }
 
         .content {
@@ -38,24 +38,22 @@
 
         .headline {
             position: absolute;
-            top: 300px;
-            /* вертикальное положение — можно подкорректировать */
-            left: -400px;
-            /* старт за экраном */
+            top: 35%;
+            left: 5%;
             z-index: 15;
-            /* поверх всего */
-            animation: slideInLeft 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+            animation: slideInLeft 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
             animation-delay: 0.5s;
         }
 
         .headline h1 {
             font-family: 'benz-b', sans-serif;
-            font-size: 70px;
+            font-size: clamp(42px, 6vw, 80px);
             text-transform: uppercase;
             color: #ffffff;
             text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
             letter-spacing: 2px;
-            white-space: nowrap;
+            margin: 0;
         }
 
         /* Анимация выезда слева */
@@ -193,7 +191,7 @@
         }
 
         .text-block p {
-            font-size: 18px;
+            font-size: 25px;
             font-weight: 400;
             letter-spacing: 1px;
             color: rgba(255, 255, 255, 0.9);
@@ -260,27 +258,26 @@
 
         .hashtags {
             position: absolute;
-            top: 230px;
-            right: -400px;
-            /* старт за пределами экрана */
+            top: 20%;
+            right: 5%;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            gap: 8px;
+            gap: 10px;
             z-index: 20;
-            animation: slideInRight 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+            animation: slideInRight 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
             animation-delay: 1.5s;
-            /* появляется после основного заголовка */
         }
 
         .hashtags span {
             font-family: 'benz-b', sans-serif;
             background: rgba(255, 255, 255, 0.15);
             color: #fff;
-            padding: 6px 16px;
+            padding: 6px 18px;
             border-radius: 20px;
             backdrop-filter: blur(6px);
-            font-size: 36px;
+            font-size: clamp(20px, 3vw, 34px);
             text-transform: uppercase;
             letter-spacing: 1px;
             white-space: nowrap;
@@ -303,31 +300,54 @@
             animation-delay: 2.2s;
         }
 
-        /* Основная анимация блока */
-        @keyframes slideInRight {
+        /* Анимации */
+        @keyframes slideInLeft {
             0% {
-                transform: translateX(0);
+                transform: translateX(-200px);
+                opacity: 0;
             }
 
             60% {
-                transform: translateX(-420px);
-            }
-
-            80% {
-                transform: translateX(-380px);
+                transform: translateX(20px);
+                opacity: 1;
             }
 
             100% {
-                transform: translateX(-400px);
+                transform: translateX(0);
+                opacity: 1;
             }
         }
 
-        /* Плавное проявление тегов */
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(200px);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateX(-20px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
         @keyframes tagFadeIn {
             to {
                 opacity: 1;
                 transform: translateX(0);
             }
+        }
+
+
+        .hashtags,
+        .headline,
+        .decor-bottom-left,
+        .medals {
+            will-change: transform, opacity;
         }
     </style>
 </head>
@@ -375,7 +395,6 @@
             <img class="back-1" src="./assets/img/hero/podlojka-1-1.png" alt="">
             <img class="fron-1" src="./assets/img/hero/podlojka-1.png" alt="">
             <div class="text-block">
-                <h2>История силы и вдохновения</h2>
                 <p>
                     История Валентина Гойко достойна киноленты: оказавшись в коляске, парень не опустил руки,
                     а живёт на полную катушку и мотивирует быть сильными других.
@@ -385,9 +404,9 @@
             <img class="decor-bottom-left" src="./assets/img/hero/splash.png" alt="">
         </div>
         <div class="hashtags">
-            <span>#Марафоны</span>
-            <span>#Путешествия</span>
-            <span>#БольшаяЛюбовь</span>
+            <span>Марафоны</span>
+            <span>Путешествия</span>
+            <span>БольшаяЛюбовь</span>
         </div>
     </section>
 
