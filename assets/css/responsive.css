@@ -58,6 +58,7 @@
     margin: 0 0 48px 24px;
     padding: 0;
   }
+
 }
 
 @media (max-width: 800px) {
@@ -229,6 +230,8 @@
   .orbit__btn {
     display: none;
   }
+
+  
 }
 
 @media (max-width: 480px) {
@@ -238,6 +241,14 @@
   }
   .btn {
     padding: 10px 14px;
+  }
+
+  .caption-text {
+    padding-top: 100px;
+  }
+
+  .caption-text  p{
+    font-size: 12px;
   }
 
   .story-centered.has-bg {

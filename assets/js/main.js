@@ -318,9 +318,7 @@ function build() {
   dotsWrap.innerHTML = images
     .map(
       (_, i) =>
-        `<button class="orbit__dot" data-i="${i}" aria-label="К слайду ${
-          i + 1
-        }"></button>`
+        `<button class="orbit__dot" data-i="${i}" aria-label="К слайду ${i + 1}"></button>`
     )
     .join("");
   update(0);
@@ -351,6 +349,7 @@ function stop() {
 
 build();
 play();
+
 prevBtn.addEventListener("click", () => {
   update(-1);
   play();
