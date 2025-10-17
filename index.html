@@ -15,7 +15,321 @@
         rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+    <style>
+        .exp {
+            
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: 
+    linear-gradient(to bottom, rgba(130,130,130,0.9), rgba(130,130,130,0.95)),
+    url('./assets/img/hero/bg-city.png') center top / cover no-repeat;
+        }
 
+        .content {
+            position: relative;
+            /* остаётся в нормальном потоке */
+            z-index: 2;
+            /* поверх картинки */
+            padding: 60px;
+            color: #fff;
+        }
+
+        .headline {
+            position: absolute;
+            top: 300px;
+            /* вертикальное положение — можно подкорректировать */
+            left: -400px;
+            /* старт за экраном */
+            z-index: 15;
+            /* поверх всего */
+            animation: slideInLeft 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation-delay: 0.5s;
+        }
+
+        .headline h1 {
+            font-family: 'benz-b', sans-serif;
+            font-size: 70px;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        /* Анимация выезда слева */
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(0);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateX(450px);
+                opacity: 1;
+            }
+
+            80% {
+                transform: translateX(420px);
+            }
+
+            100% {
+                transform: translateX(440px);
+                /* финальная позиция */
+            }
+        }
+
+        .podl-1 {
+            position: absolute;
+            bottom: 0;
+            right: 50px;
+            z-index: 3;
+        }
+
+        .kitel {
+            width: 700px;
+        }
+
+
+        .podl-2 {
+            position: absolute;
+            bottom: 0;
+            right: 350px;
+            z-index: 4;
+        }
+
+        .medals {
+            width: 200px;
+            right: 50px;
+            animation: sway 4s ease-in-out infinite;
+            transform-origin: 50% 0%;
+            /* вращение вокруг нижнего правого угла */
+        }
+
+        @keyframes sway {
+            0% {
+                transform: rotate(-5deg);
+            }
+
+            50% {
+                transform: rotate(5deg);
+            }
+
+            100% {
+                transform: rotate(-5deg);
+            }
+        }
+
+        /* человек между подложкой и кителем */
+        .fon-1-2 {
+            position: absolute;
+            bottom: 0;
+            right: 400px;
+            z-index: 2;
+            /* между подложкой и кителем */
+            display: flex;
+            align-items: end;
+            justify-content: center;
+            width: 1000px;
+            height: auto;
+        }
+
+
+        .siluet-man {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 1000px;
+            transform: translate(10px, 8px);
+            /* тонкий сдвиг вниз-вправо */
+            z-index: 1;
+            opacity: 0.95;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5));
+        }
+
+        .man {
+            position: relative;
+            width: 1000px;
+            z-index: 2;
+        }
+
+        .man-11 {
+            z-index: 3;
+        }
+
+
+        .fon-1 {
+            position: relative;
+            /* обязательно! */
+            bottom: -200px;
+            left: 20px;
+            width: 1000px;
+            height: 800px;
+            z-index: 1;
+            overflow: visible;
+        }
+
+        .text-block {
+            position: absolute;
+            top: 250px;
+            left: 100px;
+            width: 600px;
+            color: #fff;
+            z-index: 5;
+            font-family: benz-b;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            line-height: 1.5;
+            animation: fadeIn 1.2s ease-in-out forwards;
+        }
+
+        .text-block h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .text-block p {
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* плавное появление */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Задний слой */
+        .back-1,
+        .fron-1 {
+            position: absolute;
+            width: 100%;
+        }
+
+        /* splash */
+        .decor-bottom-left {
+            position: absolute;
+            bottom: 150px;
+            /* компенсирует bottom:-200px у .fon-1 */
+            left: 80px;
+            width: 320px;
+            opacity: 0;
+            z-index: 10;
+            animation: splashSlideUp 2s ease-out forwards;
+            animation-delay: 1s;
+        }
+
+        /* новая версия анимации: выезд → подъем выше → фиксация */
+        @keyframes splashSlideUp {
+            0% {
+                transform: translateY(320px) scale(0.9);
+                opacity: 0;
+            }
+
+            60% {
+                transform: translateY(-40px) scale(1.05);
+                /* подняли выше */
+                opacity: 1;
+            }
+
+            80% {
+                transform: translateY(-25px) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-20px);
+                /* финальная позиция чуть выше низа блока */
+                opacity: 1;
+            }
+        }
+
+
+        .hashtags {
+            position: absolute;
+            top: 230px;
+            right: -400px;
+            /* старт за пределами экрана */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+            z-index: 20;
+            animation: slideInRight 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation-delay: 1.5s;
+            /* появляется после основного заголовка */
+        }
+
+        .hashtags span {
+            font-family: 'benz-b', sans-serif;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+            opacity: 0;
+            transform: translateX(100px);
+            animation: tagFadeIn 0.8s ease forwards;
+        }
+
+        /* поочерёдное появление тегов */
+        .hashtags span:nth-child(1) {
+            animation-delay: 1.8s;
+        }
+
+        .hashtags span:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        .hashtags span:nth-child(3) {
+            animation-delay: 2.2s;
+        }
+
+        /* Основная анимация блока */
+        @keyframes slideInRight {
+            0% {
+                transform: translateX(0);
+            }
+
+            60% {
+                transform: translateX(-420px);
+            }
+
+            80% {
+                transform: translateX(-380px);
+            }
+
+            100% {
+                transform: translateX(-400px);
+            }
+        }
+
+        /* Плавное проявление тегов */
+        @keyframes tagFadeIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -40,7 +354,44 @@
         </div>
     </header>
 
-    <section class="hero">
+    <section class="exp" id="exp">
+        <div class="headline">
+            <h1>ИНТЕРЕСНЫЕ ЛЮДИ</h1>
+        </div>
+        <div class="podl-1">
+            <img class="kitel" src="./assets/img/hero/kitel.png" alt="китель">
+        </div>
+
+        <div class="podl-2">
+            <img src="./assets/img/hero/medal-1.png" alt="" class="medals">
+        </div>
+
+        <div class="fon-1-2">
+            <img class="siluet-man" src="./assets/img/hero/man-siluet.png" alt="">
+            <img class="man" src="./assets/img/hero/man-1.png" alt="">
+        </div>
+
+        <div class="fon-1">
+            <img class="back-1" src="./assets/img/hero/podlojka-1-1.png" alt="">
+            <img class="fron-1" src="./assets/img/hero/podlojka-1.png" alt="">
+            <div class="text-block">
+                <h2>История силы и вдохновения</h2>
+                <p>
+                    История Валентина Гойко достойна киноленты: оказавшись в коляске, парень не опустил руки,
+                    а живёт на полную катушку и мотивирует быть сильными других.
+                </p>
+            </div>
+
+            <img class="decor-bottom-left" src="./assets/img/hero/splash.png" alt="">
+        </div>
+        <div class="hashtags">
+            <span>#Марафоны</span>
+            <span>#Путешествия</span>
+            <span>#БольшаяЛюбовь</span>
+        </div>
+    </section>
+
+    <!--section class="hero">
         <div class="hero__bg" id="heroBg"></div>
         <div class="container hero__in">
             <section class="hero__content">
@@ -71,7 +422,7 @@
 
             </section>
         </div>
-    </section>
+    </!--section-->
 
     <section class="video-section" data-lazy-video>
         <video class="video-bg" muted loop playsinline preload="none">
@@ -212,28 +563,27 @@
     </section>
 
 
-    <section class="story-section" id="rehab-section">
-        <div class="story-bg"></div>
-        <div class="story-container">
-            <div class="story-text">
+    <section class="simple-section">
+        <div class="simple-bg"></div>
+        <div class="simple-content">
+
+            <p>
+                На реабилитации герой нашего репортажа увидел совсем иную картину, нежели себе воображал: люди на
+                колясках продолжают жить, радоваться каждому дню, строить планы и искать себя. Он непременно решил –
+                стану таким же! Теперь он один из инструкторов лагеря и вдохновляет на перемены других. А еще с работой
+                помог и Столинский райисполком по программе адаптации к трудовой деятельности для граждан с
+                инвалидностью.
+            </p>
+            <blockquote class="quote smoke-block">
                 <p>
-                    На реабилитации герой нашего репортажа увидел совсем иную картину, нежели себе воображал:
-                    люди на колясках продолжают жить, радоваться каждому дню, строить планы и искать себя.
-                    Он непременно решил – стану таким же! Теперь он один из инструкторов лагеря и вдохновляет на
-                    перемены других.
-                    А еще с работой помог и Столинский райисполком по программе адаптации к трудовой деятельности
-                    для граждан с инвалидностью.
+                    Теперь он один из инструкторов лагеря и вдохновляет на перемены других.
+                    А ещё с работой помог Столинский райисполком по программе адаптации.
                 </p>
-                <p class="story-quote">
-                    – Работал у местного предпринимателя, который занимался продажей одежды.
-                    Делал принты на майках, кружках. Сам все организовал: создал страничку, договаривался с клиентами,
-                    продвигал товар. И там же, в Столине, государство выделило мне временное жилье, – рассказывает он с
-                    улыбкой.
-                    – Я был очень доволен.
-                </p>
-            </div>
+            </blockquote>
         </div>
+
     </section>
+
 
 
     <section id="gallery" class="gallery">
@@ -257,22 +607,47 @@
             <div class="slide" style="background-image: url('./assets/img/s-b/s-4.jpg')"></div>
         </div>
         <div class="container story-contrast__in">
-            <h2>Из спецназа – в бьюти-сферу</h2>
-            <p>В 2022 году Валентин Гойко попал в реабилитационный центр «Преодоление» в Москве. Это была еще одна
-                ступенька к самостоятельной жизни. Но речь уже не шла о бытовых навыках – это давно освоено. Валентин
-                думал о профессиональной реализации. Не может же он – молодой, крепкий парень – жить с протянутой рукой
-                или надеяться, что ему всегда будут помогать близкие. Нет, он хотел сам зарабатывать на жизнь. И судьба
-                его услышала.</p>
-            <p>Управление по труду, занятости и социальной защите Столинского райисполкома предложило Валентину Гойко
-                работу оператором ЭВМ у предпринимателя. Молодой человек вел соцсети, занимался продвижением товаров.
+            <h2>Мастер маникюра с армейской закалкой</h2>
+            <p>Проработав больше года, парень решил открыть для себя новую сферу. К месту пришлось занятие сестры –
+                мастера по маникюру. Первое время Валентин больше всего боялся брать в руки острые инструменты, но решил
+                – нужно пробовать:</p>
+            <blockquote class="quote smoke-block">
+                <p>
+                    – Наблюдал за сестрой и думал: «Ну я же сейчас что-нибудь порежу, я не смогу!».
+                </p>
+            </blockquote>
+            <p>
+                Несмотря на то, что на маникюр ушло шесть часов (традиционный маникюр с покрытием гель-лаком занимает
+                порядка двух часов у опытного мастера), первый результат удивил. Постепенно набивал руку, а после
+                нескольких недель тренировок становилось в разы лучше, рассказывает Валентин, пока мы возвращаемся из
+                города к нему в деревню:
             </p>
-            <p>– Вскоре у меня появилась мысль работать на себя, – отмечает Валентин. – Как говорится, на ловца и зверь
-                бежит. Так получилось, что у коллеги по несчастью, тоже колясочницы, с которой общаюсь, есть подруга –
-                мастер по маникюру. Девушки предложили мне постичь эту нехитрую науку. Сначала сомневался, даже сам над
-                собой посмеивался: бравый спецназовец с накачанными мускулами занимается ногтями…</p>
-            <p>Тем не менее Валентин за месяц все же научился умело обрезать кутикулу, выводить лаком замысловатые узоры
-                на ногтях. Столинские мастера маникюра подарили ему аппаратуру и материалы, необходимые для работы. И
-                дело пошло. Валентину работа понравилась. Но…</p>
+            <blockquote class="quote smoke-block">
+                <p>
+                    – Наб
+                    – Приноровился аккуратнее обрезать кутикулу и выводить основу, потом волнение и вовсе пропало. А
+                    когда
+                    получились самые первые, по-настоящему красивые ногти, понял, что это хороший вариант зарабатывать
+                    деньги и
+                    обеспечивать себя самому.
+                </p>
+            </blockquote>
+            <p>
+                Развиваться в бьюти-сфере парню помогали несколько мастеров. Одни предлагали бесплатное обучение, другие
+                – отправляли оборудование и материалы. Несколько десятков гель-лаков в палитре, две лампы, целая стопка
+                фрез – показывает нам свою мини-студию на дому Валентин:
+            </p>
+            <blockquote class="quote smoke-block">
+                <p>
+                    – Раньше занимался рисованием, поэтому мне намного проще справляться с тонкой работой. Теперь, даже
+                    когда
+                    клиенты выбирают самые необычные дизайны, всего пару часов и свежие ноготочки готовы. Мне нравится
+                    сам
+                    процесс, особенно, когда работаю с армейскими песнями на фоне. Постоянные посетительницы уже
+                    наизусть знают
+                    весь мой репертуар.
+                </p>
+            </blockquote>
         </div>
     </section>
 
@@ -281,18 +656,48 @@
         <div class="container final-tribute__in">
 
 
-            <h2>Двигаться дальше</h2>
+            <h2>Планы на сборную и переезд</h2>
 
 
 
-            <p>В Ольманах, где живет молодой человек, порядка 400 жителей. Желающих делать маникюр в разы меньше, к тому
-                же в деревне есть и другой мастер. Так что особо не заработаешь. Валентин задумывается о смене места
-                жительства. Он готов к самостоятельной жизни.</p>
-            <p>На данный момент живет с 82-летней бабушкой, которая старается заботиться о внуке. Но Валентин принимает
-                разве ее вкусную еду, остальное делает сам. Еще и другим помогает.</p>
-            <p>Не зря же командование части, в которой служил и до сих пор поддерживает отношения, представило его к
-                медали «За особые заслуги». Награда послужила стимулом двигаться дальше, развиваться, искать свое место
-                в этой непростой жизни.</p>
+            <p>За шесть лет кропотливой реабилитации Валентин проделал над собой огромную работу. Раньше он не мог сжать
+                в руках даже губку для мытья посуды, а сейчас филигранно управляется с кистевым эспандером. Все
+                благодаря изнурительным тренировкам: </p>
+            <blockquote class="quote smoke-block">
+                <p>
+                    – За два года я хорошо подкачался и укрепил руки. Начал с турника, потом в ход пошли брусья. Сначала
+                    не подтягивался, только висел по пару секунд. А дальше один раз, второй – сейчас делаю не меньше 25.
+                </p>
+            </blockquote>
+
+            <p>Спорт всегда был в его жизни. А еще больше привила эту привычку служба в спецназе. Этой части жизни в его
+                комнате посвящен целый уголок. На самом видном месте он хранит армейские фотографии с сослуживцами,
+                берет и тельняшку. С армейскими товарищами, которые частенько бывают в него в гостях, Валентин всегда на
+                связи. Он и сам нередкий гости в воинских частях – в одной из таких поездок парня наградили медалью «За
+                особые заслуги». Валентин не скрывает, что именно армия научила стойкости и выносливости, которые сейчас
+                очень помогают. И если после тяжелого рабочего дня на комбайне он всегда находил время хотя бы для
+                турника, то теперь попробует себя в самых разных направлениях. Дайвинг, настольный теннис, стрельба из
+                лука, кросс – стена в его комнате завешана десятками медалей.
+            </p>
+            <blockquote class="quote smoke-block">
+                <p>
+                    – Сейчас у меня такой ритм – позавтракал, проехал 5-6 километров. А чтобы не терять форму, после
+                    ужина катаюсь еще по 10. Это нужно для выносливости и постоянного движения мышц. А перед участием в
+                    Минском полумарафоне я еще усерднее готовился – наматывал круги по деревне. Преодолеть трассу в 21
+                    километр было нелегко, но во время забега поддержали сослуживцы, они весь маршрут были рядом.
+                </p>
+            </blockquote>
+            <p>В ближайших планах у парня – повышать скилл, набираться опыта и пополнить белорусскую паралимпийскую
+                сборную, ведь он всерьез увлекся стрельбой из лука. А еще – переезд в столицу:
+            </p>
+            <blockquote class="quote smoke-block">
+                <p>
+                    – Предвкушаю, что с переездом в Минск жизнь станет еще активнее и путешествовать будет проще. Многим
+                    покажется экстримом, но я любитель на попутных машинах сорваться в мини-тур. Люблю изучать страну,
+                    открывать новые города. Даже сам добирался как-то в Москву!
+
+                </p>
+            </blockquote>
         </div>
     </section>
 
@@ -345,21 +750,24 @@
 
     <footer class="site-footer">
         <div class="footer-credits">
-            <p>Автор: <strong>Виолетта ДРАЛЮК</strong></p>
-            <p>Фото: <strong>Иван ЯРИВАНОВИЧ</strong></p>
+            <p>Автор: <strong>Ирина ЛУКАШИК</strong></p>
+            <p>Фото: <strong>Александра КУШНЕРА</strong></p>
         </div>
         <hr class="footer-divider" />
         <div class="footer-copy">© Издательский дом «Беларусь сегодня»</div>
     </footer>
 
     <button id="scrollTopBtn" aria-label="Наверх">
-        <img src="https://cdn-icons-png.flaticon.com/512/2991/2991103.png" alt="Компас" width="64" height="64"
-            class="compass-icon" />
-
+        <img src="./assets/img/beret.png" alt="Компас" width="64" height="64" />
     </button>
 
     <script src="./assets/js/main.js"></script>
+
+
+
+
     <script>
+
         function loadYandexMetrika() {
             (function (m, e, t, r, i, k, a) {
                 m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };

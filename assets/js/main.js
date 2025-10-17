@@ -187,26 +187,24 @@ document.addEventListener("DOMContentLoaded", () => {
 /* STORY REABILITATION */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const rehabSection = document.querySelector("#rehab-section");
-  if (!rehabSection) return;
+  const section = document.querySelector(".simple-section");
+  if (!section) return;
 
   const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const sectionCenter =
-          entry.boundingClientRect.top + entry.boundingClientRect.height / 2;
-        const viewportCenter = window.innerHeight / 2;
-
-        if (entry.isIntersecting && Math.abs(sectionCenter - viewportCenter) < 150) {
-          rehabSection.classList.add("is-visible");
-        }
-      });
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        section.classList.add("active");
+        observer.unobserve(section); // однократно
+      }
     },
-    { threshold: 0 }
+    { threshold: 0.3 }
   );
 
-  observer.observe(rehabSection);
+  observer.observe(section);
 });
+
+
+
 
 
 // --------------------------------------
@@ -577,3 +575,63 @@ document.addEventListener("DOMContentLoaded", () => {
 
   quotes.forEach(q => observer.observe(q));
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('scrollTopBtn');
+  if (!btn) return;
+
+  // Гарантируем, что кнопка — прямой ребёнок body (важно для position:fixed)
+  if (btn.parentElement !== document.body) document.body.appendChild(btn);
+
+  function pickContainer() {
+    // если страница прокручивается окном — берём window
+    const doc = document.documentElement;
+    const winDelta = doc.scrollHeight - doc.clientHeight;
+    let best = window, bestDelta = winDelta;
+
+    // ищем самый "длинный" вертикально прокручиваемый контейнер
+    document.querySelectorAll('body *').forEach(el => {
+      const cs = getComputedStyle(el);
+      if (!/(auto|scroll)/.test(cs.overflowY)) return;
+      const delta = el.scrollHeight - el.clientHeight;
+      if (delta > bestDelta + 50) { best = el; bestDelta = delta; }
+    });
+    return best;
+  }
+
+  let container = pickContainer();
+
+  const getY = () =>
+    container === window
+      ? (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0)
+      : container.scrollTop;
+
+  const update = () => {
+    if (getY() > 400) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  };
+
+  const onScrollTarget = () => (container === window ? window : container);
+
+  const bind = () => onScrollTarget().addEventListener('scroll', update, { passive: true });
+  const unbind = () => onScrollTarget().removeEventListener('scroll', update);
+
+  bind();
+  window.addEventListener('resize', update);
+  window.addEventListener('load', update);
+
+  new MutationObserver(() => {
+    const next = pickContainer();
+    if (next !== container) { unbind(); container = next; bind(); update(); }
+  }).observe(document.body, { attributes: true, attributeFilter: ['class','style'] });
+
+  btn.addEventListener('click', () => {
+    (container === window ? window : container).scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  update();
+});
+
+
+
