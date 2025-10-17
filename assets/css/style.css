@@ -1025,16 +1025,12 @@ img {
 }
 
 .projects-section {
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  padding-block: clamp(24px, 4vw, 48px);
-  background: url("../img/proj-bg.jpg") center center / cover no-repeat;
-  overflow: hidden;
-  isolation: isolate;
+    position: relative;
+    width: 100%;
+    padding-block: clamp(24px, 4vw, 48px);
+    background: url(../img/proj-bg.jpg) center/cover no-repeat;
+    overflow: hidden;
+    isolation: isolate;
 }
 
 .projects-section::before {
